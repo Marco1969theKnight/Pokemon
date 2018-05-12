@@ -8,7 +8,8 @@ struct Type {
             WIND,           // tipo 3
             EARTH,          // tipo 4
             THUNDER,        // tipo 5
-            WATER           // tipo 6
+            WATER,          // tipo 6
+            NORMAL          // tipo 7
     };
 
     Type();
