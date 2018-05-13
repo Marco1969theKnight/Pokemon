@@ -27,3 +27,7 @@ Type::Type(Element name)
         tipo = 7;
     }
 }
+
+Type::Type(int tipo){
+    (*this).tipo = tipo;
+}

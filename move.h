@@ -13,6 +13,7 @@ class Move
   public:
     Move();
     Move(Type type, int power, float acc);
+    Move(int type, int power, float acc);
 };
 
 #endif

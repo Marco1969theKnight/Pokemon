@@ -14,6 +14,7 @@ struct Type {
 
     Type();
     Type(Element name);
+    Type(int tipo);
 
     int tipo;
 };
