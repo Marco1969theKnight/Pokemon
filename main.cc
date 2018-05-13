@@ -8,6 +8,7 @@
 using namespace std;
 
 int main(){
+    
     vector<Move> movimientos;
 
     for(int i = 0; i < 6; i++){

@@ -23,6 +23,7 @@ Type::Type(Element name)
         break;
     case Element::WATER:
         tipo = 6;
+        break;
     case Element::NORMAL:
         tipo = 7;
     }
