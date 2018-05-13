@@ -17,3 +17,10 @@ void Move::set(Type type, int power, float acc){
     m_power = power;
     m_acc = acc;
 }
+
+Move::Move(int type, int power, float acc)
+{
+    m_type = type;
+    m_power = power;
+    m_acc = acc;
+}

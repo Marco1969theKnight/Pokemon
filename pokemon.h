@@ -18,11 +18,12 @@ class Pokemon
   public:
     Pokemon();
     Pokemon(Type type, int vida);
+    Pokemon(int type, int vida);
     Pokemon(Type type, int vida, vector<Move> moves);
 
-    bool set_moves(vector<Type> type_moves, int power, double acc);
 
-
+    void setType(Type type);
+    void setLife(int vida);
 };
 
 #endif
