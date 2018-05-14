@@ -29,7 +29,7 @@ int main()
     item1.usos = 4;
     it.push_back(item1);
 
-    player jugador1(pok, it);
+    Player jugador1(pok, it);
 
     jugador1.ver_Pokemon();
     jugador1.ver_Items();
