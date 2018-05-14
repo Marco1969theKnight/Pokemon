@@ -14,6 +14,7 @@ protected:
   int o_vida;
   Type o_type;
   vector<Move> o_moves;
+  string o_name;
 
 public:
   Pokemon();
@@ -27,6 +28,25 @@ public:
   Type tipo() const; // retorna el tipo
   int vida() const;  // retorna la vida
   
+
+  enum class NomPok
+  {
+    CHARMANDER, // FIRE       1
+    CHARIZARD,
+    ARTICUNO, // ICE        2
+    PIDGEY,   // WIND       3
+    PIDGEOT,
+    BULBASAUR, // EARTH      4
+    VENUSAUR,
+    ZAPDOS, // THUNDER    5
+    PIKACHU,
+    SQUIRTLE, // WATER      6
+    BLASTOISE,
+    PORYGON, // NORMAL     7
+    EEVEE
+  };
+
+  Pokemon(NomPok name);
 };
 
 #endif
