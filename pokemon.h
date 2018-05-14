@@ -26,6 +26,7 @@ public:
   void setMoves(vector<Move> moves);
   Type tipo() const; // retorna el tipo
   int vida() const;  // retorna la vida
+  
 };
 
 #endif
