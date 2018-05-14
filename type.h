@@ -17,6 +17,8 @@ struct Type {
     Type(int tipo);
 
     int tipo;
+    int weakness;       // la debilidad
+    int stronger;       // sobre el que tiene ventaja
 };
 
 #endif

@@ -24,6 +24,8 @@ class Pokemon
 
     void setType(Type type);
     void setLife(int vida);
+    Type tipo() const;        // retorna el tipo
+    int vida() const;         // retorna la vida
 };
 
 #endif

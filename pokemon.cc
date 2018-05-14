@@ -33,3 +33,12 @@ Pokemon::Pokemon(Type type, int vida, vector<Move> moves) : Pokemon(type, vida)
     o_moves = moves;
 }
 
+Type Pokemon::tipo() const
+{
+    return o_type;
+}
+
+int Pokemon::vida() const
+{
+    return o_vida;
+}
