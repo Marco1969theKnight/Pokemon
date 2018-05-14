@@ -1,0 +1,1 @@
+Añadir un método Pokemon::set(NomPok name) a pokemon.cc
