@@ -5,7 +5,7 @@
 
 typedef struct 
 {
-	string nombre;
+	std::string nombre;
 	int usos;
 }Item;
 

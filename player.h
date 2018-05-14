@@ -4,7 +4,7 @@
 #include "pokemon.h"
 #include "item.h"
 
-class player
+class Player
 {
 	protected:
 		vector <Pokemon> pokemones;
@@ -12,8 +12,8 @@ class player
 
 
 	public:
-		player();
-		player(vector<Pokemon>,vector<Item>);
+		Player();
+		Player(vector<Pokemon>,vector<Item>);
 		void set_Pokemon(vector<Pokemon>);
 		void set_Items(vector<Item>);
 		void ver_Pokemon();

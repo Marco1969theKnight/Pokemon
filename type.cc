@@ -43,6 +43,7 @@ Type::Type(Element name)
     }
 }
 
-Type::Type(int tipo){
+Type::Type(int tipo)
+{
     (*this).tipo = tipo;
 }

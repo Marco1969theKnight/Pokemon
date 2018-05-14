@@ -9,10 +9,11 @@ Move::Move()
 
 Move::Move(Type type, int power, float acc)
 {
-    set( type,  power, acc);
+    set(type, power, acc);
 }
 
-void Move::set(Type type, int power, float acc){
+void Move::set(Type type, int power, float acc)
+{
     m_type = type;
     m_power = power;
     m_acc = acc;
