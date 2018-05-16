@@ -6,10 +6,11 @@ Player::Player()
 {
 }
 
-Player::Player(vector<Pokemon> pok, vector<Item> it)
+Player::Player(vector<Pokemon> pok, vector<Item> it, string name)
 {
 	set_Pokemon(pok);
 	set_Items(it);
+	set_name(name);
 }
 
 void Player::set_Pokemon(vector<Pokemon> pok)
@@ -21,15 +22,37 @@ void Player::set_Pokemon(vector<Pokemon> pok)
 void Player::set_Items(vector<Item> it)
 {
 	items = it;
-	return;
 }
 
-void Player::ver_Pokemon()
+void Player::set_name(string name)
 {
-	std::cout << pokemones.size() << endl;
+	(*this).name = name;
 }
 
-void Player::ver_Items()
+int Player::num_Pokemon()
 {
-	std::cout << items.size() << endl;
+	return pokemones.size();
+}
+
+int Player::num_Items()
+{
+	return items.size();
+}
+
+string Player::name_poke(int n)
+{
+	if (n > pokemones.size() || n < 0)
+		return "No data pokemon.";
+	return pokemones[n].name();
+}
+string Player::name_item(int n)
+{
+	if (n > items.size() || n < 0)
+		return "No data item.";
+	return items[n].nombre;
+}
+
+string Player::ver_nombre(Player p)
+{
+	return p.name;
 }

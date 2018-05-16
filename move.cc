@@ -14,7 +14,6 @@ Move::Move(Type type, int power, float acc)
     m_name = "new";
 }
 
-
 Move::Move(int type, int power, float acc)
 {
     m_type = type;
@@ -167,4 +166,9 @@ void Move::set(NameMove name)
         m_name = "Peck";
         break;
     }
+}
+
+string Move::name() const
+{
+    return m_name;
 }

@@ -15,28 +15,27 @@ protected:
   string m_name;
 
 public:
-
   enum class NameMove
   {
-    BUBBLE,       // Water
-    WATER_GUN, 
-    WATERFALL,    
+    BUBBLE, // Water
+    WATER_GUN,
+    WATERFALL,
     THUNDERSHOCK, // Thunder
     THUNDERBOLT,
-    THUNDER,    
+    THUNDER,
     FLAMETHROWER, //Fire
     FIRE_BLAST,
     FIRE_SPIN,
-    AURORA_BEAM,         // Ice
+    AURORA_BEAM, // Ice
     BLIZZARD,
     ICE_BEAM,
-    THRASH,       // Normal
+    THRASH, // Normal
     SCRATCH,
     SKULL_BASH,
-    ROCK_SLIDE,        //Earth
+    ROCK_SLIDE, //Earth
     SOLARBEAM,
     RAZOR_LEAF,
-    WING_ATTACK,  //WInd
+    WING_ATTACK, //WInd
     SKY_ATTACK,
     PECK
   };
@@ -48,10 +47,7 @@ public:
 
   void set(Type type, int power, float acc);
   void set(NameMove name);
+  string name() const;
 };
 
 #endif
-
-//Air - flying
-//earth - plant 
-//elctric - thunder

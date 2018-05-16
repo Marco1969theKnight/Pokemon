@@ -17,18 +17,6 @@ protected:
   string o_name;
 
 public:
-  Pokemon();
-  Pokemon(Type type, int vida);
-  Pokemon(int type, int vida);
-  Pokemon(Type type, int vida, vector<Move> moves);
-
-  void setType(Type type);
-  void setLife(int vida);
-  void setMoves(vector<Move> moves);
-  Type tipo() const; // retorna el tipo
-  int vida() const;  // retorna la vida
-  
-
   enum class NomPok
   {
     CHARMANDER, // FIRE       1
@@ -46,7 +34,20 @@ public:
     EEVEE
   };
 
+  Pokemon();
+  Pokemon(Type type, int vida);
+  Pokemon(int type, int vida);
+  Pokemon(Type type, int vida, vector<Move> moves);
   Pokemon(NomPok name);
+
+  void setType(Type type);
+  void setLife(int vida);
+  void setMoves(vector<Move> moves);
+  void setPokName(NomPok name);
+
+  Type tipo() const; // retorna el tipo
+  int vida() const;  // retorna la vida
+  string name() const;
 };
 
 #endif

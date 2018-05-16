@@ -1,1 +1,1 @@
-Añadir un método Pokemon::set(NomPok name) a pokemon.cc
+Tener concordancia entre los nombres de los métodos e idioma, así como en loa atributos de cada objeto por ejemplo que los nombres de los items, pokemons, etc. sean guardados con la variable name. 

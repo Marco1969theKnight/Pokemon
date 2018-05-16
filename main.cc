@@ -1,38 +1,67 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 #include "move.h"
 #include "pokemon.h"
 #include "type.h"
 #include "player.h"
 #include "item.h"
 
-
 using namespace std;
 
-int main(){
-    
+int main()
+{
+
     vector<Move> movimientos;
+    vector<Move> movis;
+    vector<Pokemon> pokes;
 
-    for(int i = 0; i < 6; i++){
-        movimientos.push_back(Move(Type(i), 100, 2.3));
-    } 
+    movimientos.push_back(Move(Move::NameMove::THRASH));
+    movimientos.push_back(Move(Move::NameMove::THUNDERSHOCK));
+    movimientos.push_back(Move(Move::NameMove::THUNDER));
 
-    Pokemon lokochongo(Type::Element::THUNDER, 100, movimientos);
+    movis.push_back(Move(Move::NameMove::FIRE_BLAST));
+    movis.push_back(Move(Move::NameMove::FLAMETHROWER));
+    movis.push_back(Move(Move::NameMove::SKULL_BASH));
 
-    vector<Pokemon> pok;
-    pok.push_back(lokochongo);
-    vector<Item> it;
-    
-    Item item1;
-    item1.nombre="pokebola";
-    item1.usos=4;
-    it.push_back(item1);
+    Pokemon pk1(Pokemon::NomPok::PIKACHU);
+    Pokemon pk2(Pokemon::NomPok::CHARMANDER);
 
+    pk1.setMoves(movimientos);
+    pk2.setMoves(movis);
 
-    Player jugador1(pok,it);
+    pokes.push_back(pk1);
+    pokes.push_back(pk2);
 
-    jugador1.ver_Pokemon();
-    jugador1.ver_Items();
+    Item pkb1, pkb2, pkb3;
+    pkb1.nombre = "Poke ball";
+    pkb2.nombre = "Superball";
+    pkb3.nombre = "Masterball";
+
+    pkb1.usos = 3;
+    pkb2.usos = 2;
+    pkb1.usos = 1;
+
+    vector<Item> pokebolas;
+
+    pokebolas.push_back(pkb1);
+    pokebolas.push_back(pkb2);
+    pokebolas.push_back(pkb3);
+
+    string name = "Yo Mero El Mero Mero";
+
+    Player YoMero(pokes, pokebolas, name);
+
+    cout << "Jugador: " << YoMero.ver_nombre(YoMero) << endl;
+    cout << "Pokemons: " << endl;
+    for (int i = 0; i < YoMero.num_Pokemon(); i++)
+    {
+        cout << "\t" << i + 1 << ": " << YoMero.name_poke(i) << endl;
+    }
+    cout << "Items: " << endl;
+    for (int i = 0; i < YoMero.num_Items(); i++)
+    {
+        cout << "\t" << i + 1 << ": " << YoMero.name_item(i) << endl;
+    }
 
     return 0;
 }
