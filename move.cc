@@ -162,7 +162,7 @@ void Move::set(NameMove name)
     case NameMove::PECK:
         m_type = Type::Element::WIND;
         m_power = 35;
-        m_acc = 100;
+        m_acc = 1;
         m_name = "Peck";
         break;
     }
