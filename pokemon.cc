@@ -115,9 +115,9 @@ void Pokemon::setPokName(NomPok name)
     }
 }
 
-Type Pokemon::tipo() const
+int Pokemon::tipo() const
 {
-    return o_type;
+    return o_type.tipo;
 }
 
 int Pokemon::vida() const
