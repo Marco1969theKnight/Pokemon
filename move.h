@@ -10,7 +10,6 @@ class Move
 {
 protected:
   Type m_type;
-  
   string m_name;
 
 public:
