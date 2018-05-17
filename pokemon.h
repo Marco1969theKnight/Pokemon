@@ -45,7 +45,7 @@ public:
   void setMoves(vector<Move> moves);
   void setPokName(NomPok name);
 
-  int tipo() const; // retorna el tipo
+  Type tipo() const; // retorna el tipo
   int vida() const;  // retorna la vida
   string name() const;
 };
