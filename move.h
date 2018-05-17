@@ -10,13 +10,14 @@ class Move
 {
 protected:
   Type m_type;
-  float m_acc;
+  
   string m_name;
 
 public:
 
   int m_power;
-  
+  float m_acc;
+
   enum class NameMove
   {
     BUBBLE, // Water
