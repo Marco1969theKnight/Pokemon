@@ -148,17 +148,12 @@ void moves_Pokemon(int n,vector<Move>mov, Pokemon* a, Pokemon* b, Player* j, boo
 
 }
 
-int main()
+void chose_Pokemon(int n,Player* j)
 {
+    cout<<"Elige los Pokemones del jugador "<<n<<endl;
 
-    Player j1,j2;
-    int turno=0,jugada;
     vector<Pokemon>pok;
 
-    for(int z=0;z<2;z++)
-    {
-        
-        cout<<"Elige los Pokemones del jugador "<<z+1<<endl;
         for(int i=0;i<5;i++)
         {
             cout<<"Qué Pokemon quieres?"<<endl;
@@ -197,17 +192,21 @@ int main()
                 break;
             }
         }
-        if(!z)
-        {
-            j1.set_Pokemon(pok);
-            pok.clear();
-        }
-        else
-        {
-            j2.set_Pokemon(pok);
-            pok.clear();
-        }
-    }
+
+    j[0].set_Pokemon(pok);
+    pok.clear();
+        
+    return;
+}
+
+int main()
+{
+
+    Player j1,j2;
+    int turno=0,jugada;
+    
+    chose_Pokemon(1,&j1);
+    chose_Pokemon(2,&j2);
 
     j1.set_Alive(5);
     j2.set_Alive(5);
