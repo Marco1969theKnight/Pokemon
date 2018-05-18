@@ -64,16 +64,23 @@ void change_Pokemon(int n, vector<Pokemon>pok , bool* ver, Pokemon* act, int* po
         cout<<"Jugador 1 Escoge un nuevo Pokemon\n"<<endl;
     if(n==2)
         cout<<"Jugador 2 Escoge un nuevo Pokemon\n"<<endl;
-
     int opc;
-    for(int i=0;i<5;i++)
+    do
     {
-        if(!ver[i])
+        for(int i=0;i<5;i++)
         {
-            cout<<i+1<<pok[i].name()<<" Vida -> "<<pok[i].vida()<<endl; ;
+            if(!ver[i])
+            {
+                cout<<i+1<<pok[i].name()<<" Vida -> "<<pok[i].vida()<<endl; ;
+            }
         }
-    }
-    cin>>opc;
+        cin>>opc;
+        if(opc<=0||opc>5||ver[opc - 1]==1)
+        {
+            cout<<"Ese pokemon no esta disponible\nElige otro\n";
+            continue;
+        }
+    }while(opc<=0||opc>5||ver[opc - 1]==1);
     act[0] = pok[opc - 1];
     posact[0] = opc - 1;
 
@@ -216,7 +223,7 @@ int main()
         else
             change_Pokemon(2,j2.get_Pokemones(),ver2,&act2,&posact2);
     }
-    
+
     while(j1.get_Alive()&&j2.get_Alive())
     {
         cout<<"¿Que quieres hacer jugador "<<turno+1<<"?\n1. Atacar\n2. Usar Objeto\n3. Cambiar Pokemon\n";
