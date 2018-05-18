@@ -44,7 +44,8 @@ public:
   void setLife(int vida);
   void setMoves(vector<Move> moves);
   void setPokName(NomPok name);
-
+  
+  vector<Move> get_Moves()const;
   Type tipo() const; // retorna el tipo
   int vida() const;  // retorna la vida
   string name() const;

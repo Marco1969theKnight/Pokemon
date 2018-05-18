@@ -56,3 +56,19 @@ string Player::ver_nombre(Player p)
 {
 	return p.name;
 }
+
+void Player::set_Alive(int a)
+{
+	vivos=a;
+	return;
+}
+
+int Player::get_Alive()
+{
+	return vivos;
+}
+
+vector<Pokemon> Player::get_Pokemones()
+{
+	return pokemones;
+}

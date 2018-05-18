@@ -10,9 +10,10 @@ using namespace std;
 class Player
 {
 protected:
-	vector<Pokemon> pokemones;
 	vector<Item> items;
 	string name;
+	vector<Pokemon> pokemones;
+	int vivos;
 
 public:
 	Player();
@@ -20,9 +21,11 @@ public:
 	void set_Pokemon(vector<Pokemon>);
 	void set_Items(vector<Item>);
 	void set_name(string name);
+	void set_Alive(int);
+	int get_Alive();
 	int num_Pokemon();
 	int num_Items();
-
+	vector<Pokemon> get_Pokemones();
 	string name_poke(int n);
 	string name_item(int n);
 	string ver_nombre(Player p);

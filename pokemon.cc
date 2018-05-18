@@ -181,3 +181,8 @@ string Pokemon::name() const
 {
     return o_name;
 }
+
+vector<Move> Pokemon::get_Moves()const
+{
+    return o_moves;
+}
