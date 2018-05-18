@@ -172,3 +172,8 @@ string Move::name() const
 {
     return m_name;
 }
+
+Type Move::get_Type()
+{
+    return m_type;
+}

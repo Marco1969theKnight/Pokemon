@@ -47,6 +47,7 @@ public:
   Move(int type, int power, float acc);
   Move(NameMove name);
 
+  Type get_Type();
   void set(Type type, int power, float acc);
   void set(NameMove name);
   string name() const;

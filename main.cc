@@ -13,23 +13,22 @@ using namespace std;
 int atack(Pokemon* a, Pokemon* b, Move atac)
 {
     int estado=0;
-    Type typea,typeb;
-    typea = a -> tipo();
+    Type typeb;
+
     typeb = b -> tipo();
 
-    int ta = typea.tipo;
-    int tb = typeb.tipo;
+    int ta = atac.get_Type().tipo;
 
     float por=1;
     
-    if(typea.weakness==tb)
+    if(ta==typeb.stronger)
     {
         por=0.5;
         estado=1;
     }   
     else
     {
-        if(typea.stronger==tb)
+        if(ta==typeb.weakness)
         {
             por=1.5;
             estado=2;
@@ -57,6 +56,89 @@ int atack(Pokemon* a, Pokemon* b, Move atac)
     b -> setLife(vida);
 
     return estado;
+}
+
+void change_Pokemon(int n, vector<Pokemon>pok , bool* ver, Pokemon* act, int* posact)
+{
+    if(n==1)
+        cout<<"Jugador 1 Escoge un nuevo Pokemon\n"<<endl;
+    if(n==2)
+        cout<<"Jugador 2 Escoge un nuevo Pokemon\n"<<endl;
+
+    int opc;
+    for(int i=0;i<5;i++)
+    {
+        if(!ver[i])
+        {
+            cout<<i+1<<pok[i].name()<<" Vida -> "<<pok[i].vida()<<endl; ;
+        }
+    }
+    cin>>opc;
+    act[0] = pok[opc - 1];
+    posact[0] = opc - 1;
+
+
+    return;
+}
+
+void moves_Pokemon(int n,vector<Move>mov, Pokemon* a, Pokemon* b, Player* j, bool* ver, int* posact)
+{
+
+    int opca;
+    cout<<"Cual ataque quieres hacer?\n";
+    for(int i=0;i<4;i++)
+    {
+        cout<<i+1<<". "<<mov[i].name()<<endl;
+    }
+    cin>>opca;
+    
+    Move ataque = mov[opca - 1];
+    int z = atack(&a[0],&b[0],ataque);
+    switch(z)
+    {
+        case 1: cout<<"El ataque no hizo mucho daño"<<endl;
+            break;
+        case 2: cout<<"El ataque fue super efectivo"<<endl;
+            break;
+        case 3: cout<<"Fue un ataque normal"<<endl;
+            break;
+        case 4: cout<<"El ataque no hizo ningun daño"<<endl;
+            break;            
+    }
+    
+    vector<Pokemon> pok = j[0].get_Pokemones();
+    pok[posact[0]] = a[0];
+    j[0].set_Pokemon(pok);
+
+    if(b[0].vida() <= 0)
+    {
+        ver[posact[0]] = 1;
+        cout<<"Murio "<<b[0].name()<<endl;
+        int v = j[0].get_Alive();
+        v--;
+        j[0].set_Alive(v);
+
+        if(v>0)
+        {
+            change_Pokemon((n+1)%3,j[0].get_Pokemones(),ver,&b[0],&posact[0]);
+        }
+        else
+        {
+            if(n==1)
+                cout<<"Gano el jugador 1"<<endl;
+            if(n==2)
+                cout<<"Gano el jugador 2"<<endl;
+            return;
+        }
+
+        
+    }
+    else
+    {
+            cout<<"A "<<b[0].name()<<" le queda "<<b[0].vida()<<" de vida"<<endl;
+            return; 
+    }
+
 }
 
 int main()
@@ -125,7 +207,7 @@ int main()
 
     Pokemon act1,act2;
     int posact1,posact2;
-    bool ver1[] = {0,0,0,0,0},ver2[] = {0,0,0,0,0};
+    bool ver1[] = {0,0,0,0,0}, ver2[] = {0,0,0,0,0};
 
     pok = j1.get_Pokemones();
     for(int i=0;i<2;i++)
@@ -134,7 +216,7 @@ int main()
         int opc;
         for(int j=0;j<5;j++)
         {
-            cout<<j+1<<". "<<pok[j].name()<<endl;    
+            cout<<j+1<<". "<<pok[j].name()<<" Vida -> "<<pok[j].vida()<<endl;    
         }
         cin>>opc;
         if(!i)
@@ -160,62 +242,7 @@ int main()
         {
             if(jugada==1)
             {
-                mov = act1.get_Moves();
-                int opca;
-                cout<<"Cual ataque quieres hacer?\n";
-                for(int i=0;i<4;i++)
-                {
-                    cout<<i+1<<". "<<mov[i].name()<<endl;
-                }
-                cin>>opca;
-                Move ataque = mov[opca - 1];
-                int a = atack(&act1,&act2,ataque);
-                switch(a)
-                {
-                    case 1: cout<<"El ataque no hizo mucho daño"<<endl;
-                        break;
-                    case 2: cout<<"El ataque fue super efectivo"<<endl;
-                        break;
-                    case 4: cout<<"El ataque no hizo ningun daño"<<endl;
-                        break;            
-                }
-                
-                pok = j2.get_Pokemones();
-                pok[posact2] = act2;
-                j2.set_Pokemon(pok);
-
-                if(act2.vida() <= 0)
-                {
-                    ver2[posact2] = 1;
-                    cout<<"Murio "<<act2.name()<<endl;
-                    int v = j2.get_Alive();
-                    v--;
-                    j2.set_Alive(v);
-
-                    if(v>0)
-                    {
-                        cout<<"Jugador 2 Escoge un nuevo Pokemon\n"<<endl;
-                        int opc;
-                        for(int i=0;i<5;i++)
-                        {
-                            if(!ver2[i])
-                            {
-                                cout<<i+1<<pok[i].name()<<endl;
-                            }
-                        }
-                        cin>>opc;
-                        act2 = pok[opc - 1];
-                        posact2 = opc - 1;
-
-                    }
-                    else
-                    {
-                        cout<<"Gano el jugador 1"<<endl;
-                        break;
-                    }
-
-                }
-
+                moves_Pokemon(1,act1.get_Moves(),&act1,&act2,&j2,ver2,&posact2);
             }
             if(jugada==2)
             {
@@ -223,20 +250,7 @@ int main()
             }
             if(jugada==3)
             {
-                pok = j1.get_Pokemones();
-                cout<<"Jugador 1 Escoge un nuevo Pokemon\n"<<endl;
-                int opc;
-                for(int i=0;i<5;i++)
-                {
-                    if(!ver1[i])
-                    {
-                        cout<<i+1<<pok[i].name()<<endl;
-                    }
-                }
-                cin>>opc;
-                act1 = pok[opc - 1];
-                posact1 = opc - 1;
-
+                change_Pokemon(1,j1.get_Pokemones(),ver1,&act1,&posact1);
             }
             turno++;
         }
@@ -244,62 +258,7 @@ int main()
         {
             if(jugada==1)
             {
-                mov = act2.get_Moves();
-                int opca;
-                cout<<"Cual ataque quieres hacer?\n";
-                for(int i=0;i<4;i++)
-                {
-                    cout<<i+1<<". "<<mov[i].name()<<endl;
-                }
-                cin>>opca;
-                Move ataque = mov[opca - 1];
-                int a = atack(&act2,&act1,ataque);
-                switch(a)
-                {
-                    case 1: cout<<"El ataque no hizo mucho daño"<<endl;
-                        break;
-                    case 2: cout<<"El ataque fue super efectivo"<<endl;
-                        break;
-                    case 4: cout<<"El ataque no hizo ningun daño"<<endl;
-                        break;            
-                }
-                
-                pok = j1.get_Pokemones();
-                pok[posact1] = act1;
-                j1.set_Pokemon(pok);
-
-                if(act1.vida() <= 0)
-                {
-                    ver1[posact1] = 1;
-                    cout<<"Murio "<<act1.name()<<endl;
-                    int v = j1.get_Alive();
-                    v--;
-                    j1.set_Alive(v);
-
-                    if(v>0)
-                    {
-                        cout<<"Jugador 1 Escoge un nuevo Pokemon\n"<<endl;
-                        int opc;
-                        for(int i=0;i<5;i++)
-                        {
-                            if(!ver1[i])
-                            {
-                                cout<<i+1<<pok[i].name()<<endl;
-                            }
-                        }
-                        cin>>opc;
-                        act1 = pok[opc - 1];
-                        posact1 = opc - 1;
-
-                    }
-                    else
-                    {
-                        cout<<"Gano el jugador 2"<<endl;
-                        break;
-                    }
-
-                }
-
+                moves_Pokemon(2,act2.get_Moves(),&act2,&act1,&j1,ver1,&posact1);
             }
             if(jugada==2)
             {
@@ -307,20 +266,7 @@ int main()
             }
             if(jugada==3)
             {
-                pok = j2.get_Pokemones();
-                cout<<"Jugador 2 Escoge un nuevo Pokemon\n"<<endl;
-                int opc;
-                for(int i=0;i<5;i++)
-                {
-                    if(!ver2[i])
-                    {
-                        cout<<i+1<<pok[i].name()<<endl;
-                    }
-                }
-                cin>>opc;
-                act2 = pok[opc - 1];
-                posact2 = opc - 1;
-
+                change_Pokemon(2,j2.get_Pokemones(),ver2,&act2,&posact2);
             }
             turno=0;
         }
@@ -328,3 +274,4 @@ int main()
     
     return 0;
 }
+
