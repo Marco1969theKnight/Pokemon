@@ -71,7 +71,7 @@ void change_Pokemon(int n, vector<Pokemon>pok , bool* ver, Pokemon* act, int* po
         {
             if(!ver[i])
             {
-                cout<<i+1<<pok[i].name()<<" Vida -> "<<pok[i].vida()<<endl; ;
+                cout<<i+1<<". "<<pok[i].name()<<" Vida -> "<<pok[i].vida()<<endl; ;
             }
         }
         cin>>opc;
@@ -127,7 +127,10 @@ void moves_Pokemon(int n,vector<Move>mov, Pokemon* a, Pokemon* b, Player* j, boo
 
         if(v>0)
         {
-            change_Pokemon((n+1)%3,j[0].get_Pokemones(),ver,&b[0],&posact[0]);
+            if(n==1)
+                change_Pokemon(2,j[0].get_Pokemones(),ver,&b[0],&posact[0]);
+            if(n==2)
+                change_Pokemon(1,j[0].get_Pokemones(),ver,&b[0],&posact[0]);
         }
         else
         {
