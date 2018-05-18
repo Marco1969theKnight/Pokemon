@@ -209,30 +209,14 @@ int main()
     int posact1,posact2;
     bool ver1[] = {0,0,0,0,0}, ver2[] = {0,0,0,0,0};
 
-    pok = j1.get_Pokemones();
     for(int i=0;i<2;i++)
     {
-        cout<<"Jugador "<<i+1<<" escoje un pokemon\n";
-        int opc;
-        for(int j=0;j<5;j++)
-        {
-            cout<<j+1<<". "<<pok[j].name()<<" Vida -> "<<pok[j].vida()<<endl;    
-        }
-        cin>>opc;
         if(!i)
-        {
-            act1 = pok[opc-1];
-            posact1 = opc-1;
-            pok = j2.get_Pokemones();
-        }
+            change_Pokemon(1,j1.get_Pokemones(),ver1,&act1,&posact1);
         else
-        {
-            act2 = pok[opc-1];
-            posact2 = opc-1;
-        }
+            change_Pokemon(2,j2.get_Pokemones(),ver2,&act2,&posact2);
     }
-    pok.clear();
-
+    
     while(j1.get_Alive()&&j2.get_Alive())
     {
         cout<<"¿Que quieres hacer jugador "<<turno+1<<"?\n1. Atacar\n2. Usar Objeto\n3. Cambiar Pokemon\n";
