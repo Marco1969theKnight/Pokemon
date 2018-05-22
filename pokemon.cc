@@ -35,7 +35,7 @@ void Pokemon::setType(Type type)
 
 void Pokemon::setLife(int vida)
 {
-    o_vida = vida;
+    o_vidamax = vida;
 }
 
 void Pokemon::setMoves(vector<Move> moves)
@@ -49,6 +49,7 @@ void Pokemon::setPokName(NomPok name)
     {
     case NomPok::CHARMANDER:
         o_vida = 309;
+        o_vidamax = 309;
         o_type = Type::Element::FIRE;
         o_name = "Charmander";
         o_moves.push_back(Move::NameMove::FIRE_SPIN);
@@ -58,6 +59,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::CHARIZARD:
         o_vida = 534;
+        o_vidamax = 534;
         o_type = Type::Element::FIRE;
         o_name = "Charizard";
         o_moves.push_back(Move::NameMove::FLAMETHROWER);
@@ -67,6 +69,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::ARTICUNO:
         o_vida = 580;
+        o_vidamax = 580;
         o_type = Type::Element::ICE;
         o_name = "Articuno";
         o_moves.push_back(Move::NameMove::AURORA_BEAM);
@@ -76,6 +79,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::PIDGEY:
         o_vida = 251;
+        o_vidamax = 251;
         o_type = Type::Element::WIND;
         o_name = "Pidgey";
         o_moves.push_back(Move::NameMove::WING_ATTACK);
@@ -85,6 +89,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::PIDGEOT:
         o_vida = 469;
+        o_vidamax = 469;
         o_type = Type::Element::WIND;
         o_name = "Pidgeot";
         o_moves.push_back(Move::NameMove::WING_ATTACK);
@@ -94,6 +99,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::BULBASAUR:
         o_vida = 318;
+        o_vidamax = 318;
         o_type = Type::Element::EARTH;
         o_name = "Bulbasaur";
         o_moves.push_back(Move::NameMove::RAZOR_LEAF);
@@ -103,6 +109,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::VENUSAUR:
         o_vida = 525;
+        o_vidamax = 525;
         o_type = Type::Element::EARTH;
         o_name = "Venusaur";
         o_moves.push_back(Move::NameMove::RAZOR_LEAF);
@@ -112,6 +119,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::ZAPDOS:
         o_vida = 580;
+        o_vidamax = 580;
         o_type = Type::Element::THUNDER;
         o_name = "Zapdos";
         o_moves.push_back(Move::NameMove::THUNDER);
@@ -121,6 +129,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::PIKACHU:
         o_vida = 300;
+        o_vidamax = 300;
         o_type = Type::Element::THUNDER;
         o_name = "Pikachu";
         o_moves.push_back(Move::NameMove::THUNDER);
@@ -130,6 +139,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::SQUIRTLE:
         o_vida = 314;
+        o_vidamax = 314;
         o_type = Type::Element::WATER;
         o_name = "Squirtle";
         o_moves.push_back(Move::NameMove::BUBBLE);
@@ -139,6 +149,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::BLASTOISE:
         o_vida = 530;
+        o_vidamax = 530;
         o_type = Type::Element::WATER;
         o_name = "Blastoise";
         o_moves.push_back(Move::NameMove::WATERFALL);
@@ -148,6 +159,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::PORYGON:
         o_vida = 395;
+        o_vidamax = 395;
         o_type = Type::Element::NORMAL;
         o_name = "Porygon";
         o_moves.push_back(Move::NameMove::SKULL_BASH);
@@ -157,6 +169,7 @@ void Pokemon::setPokName(NomPok name)
         break;
     case NomPok::EEVEE:
         o_vida = 325;
+        o_vidamax = 325;
         o_type = Type::Element::NORMAL;
         o_name = "Eevee";
         o_moves.push_back(Move::NameMove::BUBBLE);

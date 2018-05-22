@@ -12,6 +12,7 @@ class Pokemon
 {
 protected:
   int o_vida;
+  int o_vidamax;
   Type o_type;
   vector<Move> o_moves;
   string o_name;
