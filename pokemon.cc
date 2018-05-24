@@ -38,6 +38,11 @@ void Pokemon::setLife(int vida)
     o_vidamax = vida;
 }
 
+void Pokemon::changeLife(int vida)
+{
+    o_vida = vida;
+}
+
 void Pokemon::setMoves(vector<Move> moves)
 {
     o_moves = moves;
@@ -195,7 +200,21 @@ string Pokemon::name() const
     return o_name;
 }
 
-vector<Move> Pokemon::get_Moves()const
+vector<Move> Pokemon::get_Moves() const
 {
     return o_moves;
+}
+
+void Pokemon::heal()
+{
+    changeLife(o_vidamax);
+}
+
+void Pokemon::heal(int cac)
+{
+    int nvd = o_vida + cac;
+    if (nvd > o_vidamax)
+        heal();
+    else
+        changeLife(nvd);
 }

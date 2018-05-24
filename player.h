@@ -28,7 +28,7 @@ public:
 	vector<Pokemon> get_Pokemones();
 	string name_poke(int n);
 	string name_item(int n);
-	string ver_nombre(Player p);
+	string ver_name(Player p);
 };
 
 #endif

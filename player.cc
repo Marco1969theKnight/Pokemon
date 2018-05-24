@@ -42,24 +42,25 @@ int Player::num_Items()
 string Player::name_poke(int n)
 {
 	if (n > pokemones.size() || n < 0)
-		return "No data pokemon.";
+		return "No pokemon data.";
 	return pokemones[n].name();
 }
+
 string Player::name_item(int n)
 {
 	if (n > items.size() || n < 0)
-		return "No data item.";
-	return items[n].nombre;
+		return "No item data.";
+	return items[n].name;
 }
 
-string Player::ver_nombre(Player p)
+string Player::ver_name(Player p)
 {
 	return p.name;
 }
 
 void Player::set_Alive(int a)
 {
-	vivos=a;
+	vivos = a;
 	return;
 }
 
